@@ -24,5 +24,5 @@ PDF Documentation
 
 You can download the following PDF documents:
 
-* :download:`Read the Docs Guide <pdf/ReadtheDocs.pdf>`
+* :download:`Code Pipeline <pdf/ReadtheDocs.pdf>`
 * :download:`Serverless Function Guide <pdf/Serverless Function Guide.pdf>`
