@@ -15,9 +15,10 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
 Code
 ==================
 
-You can view the code on GitHub:
+You can view the specific code file on GitHub:
 
-* `ASPA WUDR Repository on GitHub <https://github.com/lmclatch/ASPA>`_
+* `__main__.py on GitHub <https://github.com/lmclatch/ASPA/blob/main/folder/folder1/__main__.py>`_
+
 
 Reference Documentation
 ==================
