@@ -19,10 +19,10 @@ You can view the code on GitHub:
 
 * `ASPA WUDR Repository on GitHub <https://github.com/lmclatch/ASPA>`_
 
-PDF Documentation
+Reference Documentation
 ==================
 
-You can download the following supporting reference documents:
+You can download the following supporting documents:
 
 * :download:`Code Pipeline <pdf/ReadtheDocs.pdf>`
 * :download:`Serverless Function Guide <pdf/Serverless Function Guide.pdf>`
