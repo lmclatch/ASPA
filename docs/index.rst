@@ -10,7 +10,7 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+.. include:: README.rst
 
 Indices and tables
 ==================
