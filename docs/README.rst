@@ -1,4 +1,4 @@
-Project Objectives
+Project Objective
 =======================================
 
  Utilize American Samoa Power Authority water usage data of customers and 
