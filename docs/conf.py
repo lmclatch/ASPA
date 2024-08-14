@@ -14,15 +14,40 @@ release = '1.0'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    'sphinx.ext.autodoc',        # Automatically document your code
+    'sphinx.ext.viewcode',       # Add links to highlighted source code
+    'sphinx.ext.githubpages',    # Support for publishing via GitHub Pages
+    'sphinx.ext.napoleon',       # Support for Google and NumPy style docstrings
+    'sphinx.ext.todo',           # Support for TODO notes
+    'sphinx.ext.coverage',       # Coverage checker for documentation
+]
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'  # Switching to the popular Read the Docs theme
 html_static_path = ['_static']
+
+# -- Sidebar Configuration ---------------------------------------------------
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'searchbox.html',
+        'relations.html',  # Links to previous/next chapters
+        'sourcelink.html', # Link to view the source
+        'versions.html',   # Version control dropdown
+        'localtoc.html',   # Local table of contents
+        'globaltoc.html',  # Global table of contents
+        'sidebarlinks.html' # Custom sidebar links
+    ]
+}
+
+# -- Extension Configuration -------------------------------------------------
+# Enable TODOs to be shown in the output
+todo_include_todos = True
+
