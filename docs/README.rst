@@ -1,5 +1,3 @@
-Project Objective
-=======================================
 
  Utilize American Samoa Power Authority water usage data of customers and 
  group it by village, usage, and month to be readable in a WaDE Schema format therefore 

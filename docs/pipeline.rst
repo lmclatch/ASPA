@@ -13,11 +13,18 @@ analysis by researchers, policymakers, and the public.
 Data Source and Input
 -----------------------------------
 Data Collection: The pipeline begins with data collection, where water usage data is gathered from various sources within American Samoa. This data typically includes measurements and estimations of water usage across different sectors, such as residential, agricultural, and industrial.
+
 Input Format: The raw data is initially received in Excel spreadsheets, which are versatile and commonly used for preliminary data recording and basic analysis in many field studies. These excel spreadsheets contain sensitive information and are accessed via a private GitHub repository.
+
 Data Transformation Processes
+-----------------------------------
+
 Data Cleaning: The first step in the transformation process involves cleaning the data. This includes correcting inconsistencies, handling missing values, and removing duplicates to ensure the accuracy and reliability of the data.
+
 Data Standardization: The pipeline standardizes data by aligning it with predefined formats and classifications, such as standardizing the names of villages and other geographical identifiers to conform with USGS requirements.
+
 Data Enrichment: The process enriches the data by deriving additional information, such as calculating aggregate water usage statistics for specific regions or periods, which are critical for comprehensive analysis.
+
 Data Formatting: Finally, the data is formatted to meet specific schema requirements of the target database (USGS website), including adjustments to field names, data types, and file formats (e.g., converting Excel files to CSV for upload).
 
 Cloud Storage and Data Management
@@ -51,9 +58,13 @@ Code Explanations
 Key Functions
 
 Quality Assurance/Control: The qa_qc_checks function ensures that water usage data is within three standard deviations of the mean and that well data does not exceed the maximum monthly production capable of the well.
+
 Transforming Data: A function transform_to_site_specific_format standardizes and filters the dataset based on predefined criteria determined by USGS.
+
 Well Data: The well_data  function imports necessary production well information and correctly formats it.
+
 Metadata Tables: There are a suite of functions designed for creating associated metadata tables required for the Wade 2.0 Schema needed for USGS.
+
 Uploading Data: The upload_to_digitalocean_spaces function utilizing Boto3, the pipeline uploads the processed CSV file to a specified DigitalOcean endpoint space based on required environmental variables.bine_matching_rows(water data)
 
 End-User Documentation
