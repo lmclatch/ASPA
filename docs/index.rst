@@ -8,9 +8,12 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :hidden:
 
-.. include:: README.rst
+   background
+   serverless
+   pipeline
+
 
 Code
 ==================
@@ -20,11 +23,4 @@ You can view the specific code file on GitHub:
 * `__main__.py on GitHub <https://github.com/lmclatch/ASPA/blob/main/folder/folder1/__main__.py>`_
 
 
-Reference Documentation
-==================
-
-You can download the following supporting documents:
-
-* :download:`Code Pipeline <pdf/ReadtheDocs.pdf>`
-* :download:`Serverless Function Guide <pdf/Serverless Function Guide.pdf>`
 

@@ -4,16 +4,12 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 # -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
-
 project = 'ASPA WUDR'
 copyright = '2024, Liza McLatchy & Chris Shuler'
 author = 'Liza McLatchy & Chris Shuler'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-
 extensions = [
     'sphinx.ext.autodoc',        # Automatically document your code
     'sphinx.ext.viewcode',       # Add links to highlighted source code
@@ -27,9 +23,7 @@ templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-
-html_theme = 'sphinx_rtd_theme'  # Switching to the popular Read the Docs theme
+html_theme = 'sphinx_rtd_theme'  # Use the popular Read the Docs theme
 html_static_path = ['_static']
 
 # -- Sidebar Configuration ---------------------------------------------------
@@ -44,10 +38,21 @@ html_sidebars = {
         'localtoc.html',   # Local table of contents
         'globaltoc.html',  # Global table of contents
         'sidebarlinks.html' # Custom sidebar links
-    ]
+    ],
+    'background': [
+        'localtoc.html',   # Local table of contents for Background section
+        'relations.html',
+    ],
+    'serverless': [
+        'localtoc.html',   # Local table of contents for Serverless Functions
+        'relations.html',
+    ],
+    'pipeline': [
+        'localtoc.html',   # Local table of contents for Data Pipeline
+        'relations.html',
+    ],
 }
 
 # -- Extension Configuration -------------------------------------------------
 # Enable TODOs to be shown in the output
 todo_include_todos = True
-
