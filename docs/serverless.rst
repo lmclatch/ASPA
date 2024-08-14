@@ -16,7 +16,7 @@ requirements.txt
 
 build.sh 
 
-How to Build a Serverless Functipn From the Command Line
+How to Build a Serverless Function From the Command Line
 -----------------------------------
 For a detailed guide on how to build a serverless function from the command line, you can download the following PDF:
 

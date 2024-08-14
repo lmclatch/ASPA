@@ -51,6 +51,10 @@ html_sidebars = {
         'localtoc.html',   # Local table of contents for Data Pipeline
         'relations.html',
     ],
+    'endpointspace': [
+        'localtoc.html',   # Local table of contents for Object Endpoint Spaces
+        'relations.html',
+    ],
 }
 
 # -- Extension Configuration -------------------------------------------------
