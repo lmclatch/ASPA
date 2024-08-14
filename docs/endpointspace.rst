@@ -25,7 +25,7 @@ Space Secret Key: The secret API key given to you
 
 Space Acess Key: The acess key given to you from the same API above
 
-To acess data, the output .CSVs can be made public
+To access data, the output .CSVs can be made public
 
 Specific Use
 -----------------
