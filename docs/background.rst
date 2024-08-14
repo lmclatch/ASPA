@@ -4,7 +4,10 @@ Background
 Project Objective
 -----------------
 
-Utilize American Samoa Power Authority water usage data of customers and 
+Goal: Process and Transfer Water use data to USGS 
+
+Specifics:
+To utilize American Samoa Power Authority water usage data of customers and 
 group it by village, usage, and month to be readable in a WaDE Schema format therefore 
 USGS can ingest our data and utilize it in their water use data initiative. 
 This included well data that was deemed to be production and the customer usage data was deemed 

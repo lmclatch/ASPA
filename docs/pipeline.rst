@@ -31,6 +31,7 @@ Cloud Storage and Data Management
 -----------------------------------
 
 DigitalOcean Space: Once transformed, the data is uploaded to DigitalOcean Space, a highly scalable object storage service. This storage solution is chosen for its reliability, security features, and compatibility with AWS S3 APIs, simplifying integration with other data services.
+
 Security and Compliance: A priority is ensuring data security and compliance with local and international data protection regulations. The pipeline uses secure transfer protocols and implements access controls to safeguard sensitive information.
 
 Detailed Architecture
@@ -38,19 +39,23 @@ Detailed Architecture
 Data Ingestion
 
 Source: The data originates from CSV files containing various attributes related to water usage, such as SiteUUID, BeneficialUseCategory, TimeframeStart, and TimeframeEnd.
+
 Tools Used: Python libraries such as Pandas for data manipulation and Boto3 for interactions with AWS-like services (DigitalOcean Spaces in this case).
 Data Processing
 
 Transformations:
+
 Standardizing Village Names: A dictionary mapping standardizes village names within the dataset.
 Column Formatting: Specific columns are selected and processed to align with the desired format.
 Aggregating Data: Data is aggregated based on certain key columns like SiteUUID and BeneficialUseCategory to sum up numerical values such as Amount.
 
 Data Storage
+
 Storage Solution: Processed data is uploaded to DigitalOcean Space using Boto3 configured for S3 compatibility.
 Security: Credentials for accessing the space are retrieved securely, and files are managed through the API.
 
 Data Output
+
 Output Format: The final output is a CSV file uploaded to a cloud storage space, which can then be accessed or downloaded as required.
 
 Code Explanations
