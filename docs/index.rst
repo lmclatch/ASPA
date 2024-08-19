@@ -17,7 +17,7 @@ Access Data
 ==================
 
 To access the data, click: 
-`Access Data <https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html>`_ 
+`https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html`_ 
 
 Overview
 ==================
