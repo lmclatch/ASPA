@@ -1,0 +1,419 @@
+{# TEMPLATE VAR SETTINGS #}
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+{%- if not embedded and docstitle %}
+  {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{%- else %}
+  {%- set titlesuffix = "" %}
+{%- endif %}
+{%- set lang_attr = 'en' if language == None else (language | replace('_', '-')) %}
+{%- set sphinx_writer = 'writer-html5' if html5_doctype else 'writer-html4' -%}
+
+{# Build sphinx_version_info tuple from sphinx_version string in pure Jinja #}
+{%- set (_ver_major, _ver_minor) = (sphinx_version.split('.') | list)[:2] | map('int') -%}
+{%- set sphinx_version_info = (_ver_major, _ver_minor, -1) -%}
+
+<!DOCTYPE html>
+<html class="{{ sphinx_writer }}" lang="{{ lang_attr }}"{% if sphinx_version_info >= (7, 2) %} data-content_root="{{ content_root }}"{% endif %}>
+<head>
+  <meta charset="utf-8" />
+  {{- metatags }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {%- block htmltitle %}
+  <title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+  {%- endblock -%}
+
+  {#- CSS #}
+  {%- if sphinx_version_info < (4, 0) -%}
+    <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+    <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
+  {%- endif %}
+  {%- for css_file in css_files %}
+    {%- if css_file|attr("filename") %}
+      {{ css_tag(css_file) }}
+    {%- else %}
+      <link rel="stylesheet" href="{{ pathto(css_file, 1)|escape }}" type="text/css" />
+    {%- endif %}
+  {%- endfor %}
+
+  {# "extra_css_files" is a theme option and it's always a string #}
+  {%- for css_file in extra_css_files %}
+    <link rel="stylesheet" href="{{ pathto(css_file, 1)|escape }}" type="text/css" />
+  {%- endfor -%}
+
+  {#- FAVICON
+      favicon_url is the only context var necessary since Sphinx 4.
+      In Sphinx<4, we use favicon but need to prepend path info.
+  #}
+  {%- set _favicon_url = favicon_url | default(pathto('_static/' + (favicon or ""), 1)) %}
+  {%- if favicon_url or favicon %}
+    <link rel="shortcut icon" href="{{ _favicon_url }}"/>
+  {%- endif %}
+
+  {#- CANONICAL URL (deprecated) #}
+  {%- if theme_canonical_url and not pageurl %}
+    <link rel="canonical" href="{{ theme_canonical_url }}{{ pagename }}.html"/>
+  {%- endif -%}
+
+  {#- CANONICAL URL #}
+  {%- if pageurl %}
+    <link rel="canonical" href="{{ pageurl|e }}" />
+  {%- endif -%}
+
+  {#- JAVASCRIPTS #}
+  {%- block scripts %}
+  <!--[if lt IE 9]>
+    <script src="{{ pathto('_static/js/html5shiv.min.js', 1) }}"></script>
+  <![endif]-->
+  {%- if not embedded %}
+  {# XXX Sphinx 1.8.0 made this an external js-file, quick fix until we refactor the template to inherert more blocks directly from sphinx #}
+    {%- if sphinx_version_info >= (1, 8) -%}
+      {%- if sphinx_version_info < (4, 0) -%}
+      <script id="documentation_options" data-url_root="{{ url_root }}" src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
+      {%- endif -%}
+      {%- for scriptfile in script_files %}
+        {{ js_tag(scriptfile) }}
+      {%- endfor %}
+    {%- else %}
+      <script>
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'{{ url_root }}',
+              VERSION:'{{ release|e }}',
+              LANGUAGE:'{{ language }}',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'{{ '' if no_search_suffix else file_suffix }}',
+              HAS_SOURCE:  {{ has_source|lower }},
+              SOURCELINK_SUFFIX: '{{ sourcelink_suffix }}'
+          };
+      </script>
+      {%- for scriptfile in script_files %}
+        <script src="{{ pathto(scriptfile, 1) }}"></script>
+      {%- endfor %}
+    {%- endif %}
+    <script src="{{ pathto('_static/js/theme.js', 1) }}"></script>
+
+    {#- OPENSEARCH #}
+    {%- if use_opensearch %}
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}"
+          href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+    {%- endif %}
+  {%- endif %}
+  {%- endblock %}
+
+  {%- block linktags %}
+    {%- if hasdoc('about') %}
+    <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}" />
+    {%- endif %}
+    {%- if hasdoc('genindex') %}
+    <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}" />
+    {%- endif %}
+    {%- if hasdoc('search') %}
+    <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}" />
+    {%- endif %}
+    {%- if hasdoc('copyright') %}
+    <link rel="copyright" title="{{ _('Copyright') }}" href="{{ pathto('copyright') }}" />
+    {%- endif %}
+    {%- if next %}
+    <link rel="next" title="{{ next.title|striptags|e }}" href="{{ next.link|e }}" />
+    {%- endif %}
+    {%- if prev %}
+    <link rel="prev" title="{{ prev.title|striptags|e }}" href="{{ prev.link|e }}" />
+    {%- endif %}
+  {%- endblock %}
+  {%- block extrahead %} {% endblock %}
+</head>
+Last login: Fri Aug  9 14:04:27 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) Lizas-MacBook-Pro:~ lizamclatchy$ pip install sphinx
+Requirement already satisfied: sphinx in /opt/anaconda3/lib/python3.12/site-packages (7.3.7)
+Requirement already satisfied: sphinxcontrib-applehelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.0.2)
+Requirement already satisfied: sphinxcontrib-devhelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.0.2)
+Requirement already satisfied: sphinxcontrib-jsmath in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp>=2.0.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (2.0.0)
+Requirement already satisfied: sphinxcontrib-serializinghtml>=1.1.9 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.1.10)
+Requirement already satisfied: sphinxcontrib-qthelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.0.3)
+Requirement already satisfied: Jinja2>=3.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (3.1.4)
+Requirement already satisfied: Pygments>=2.14 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (2.15.1)
+Requirement already satisfied: docutils<0.22,>=0.18.1 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (0.18.1)
+Requirement already satisfied: snowballstemmer>=2.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (2.2.0)
+Requirement already satisfied: babel>=2.9 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (2.11.0)
+Requirement already satisfied: alabaster~=0.7.14 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (0.7.16)
+Requirement already satisfied: imagesize>=1.3 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (1.4.1)
+Requirement already satisfied: requests>=2.25.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (2.32.2)
+Requirement already satisfied: packaging>=21.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx) (23.2)
+Requirement already satisfied: pytz>=2015.7 in /opt/anaconda3/lib/python3.12/site-packages (from babel>=2.9->sphinx) (2024.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/anaconda3/lib/python3.12/site-packages (from Jinja2>=3.0->sphinx) (2.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx) (2.2.2)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx) (2024.7.4)
+(base) Lizas-MacBook-Pro:~ lizamclatchy$ mkdir docs
+(base) Lizas-MacBook-Pro:~ lizamclatchy$ cd docs
+(base) Lizas-MacBook-Pro:docs lizamclatchy$ sphinx-quickstart
+Welcome to the Sphinx 7.3.7 quickstart utility.
+
+Please enter values for the following settings (just press Enter to
+accept a default value, if one is given in brackets).
+
+Selected root path: .
+
+You have two options for placing the build directory for Sphinx output.
+Either, you use a directory "_build" within the root path, or you separate
+"source" and "build" directories within the root path.
+> Separate source and build directories (y/n) [n]: no
+
+The project name will occur in several places in the built documentation.
+> Project name: ASPA WUDR
+> Author name(s): Liza McLatchy & Chris Shuler
+> Project release []: 1.0
+
+If the documents are to be written in a language other than English,
+you can select a language here by its language code. Sphinx will then
+translate text that it generates into that language.
+
+For a list of supported codes, see
+https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-language.
+> Project language [en]: en
+
+Creating file /Users/lizamclatchy/docs/conf.py.
+Creating file /Users/lizamclatchy/docs/index.rst.
+Creating file /Users/lizamclatchy/docs/Makefile.
+Creating file /Users/lizamclatchy/docs/make.bat.
+
+Finished: An initial directory structure has been created.
+
+You should now populate your master file /Users/lizamclatchy/docs/index.rst and create other documentation
+source files. Use the Makefile to build the docs, like so:
+   make builder
+where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+
+(base) Lizas-MacBook-Pro:docs lizamclatchy$ mkdir -p docs/pdf
+(base) Lizas-MacBook-Pro:docs lizamclatchy$ 
+  [Restored Aug 19, 2024 at 8:49:20 AM]
+## cd /Users/lizamclatchy/docs ##
+Last login: Mon Aug 19 08:36:58 on ttys000
+Restored session: Tue Aug 13 11:12:10 HST 2024
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) Lizas-MacBook-Pro:~ lizamclatchy$ cd ASPA_WUDR
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ s3cmd setacl s3://try-test --acl-public --recursive
+s3://try-test/Final_Aggregated_Data.csv: ACL set to Public  [1 of 6]
+s3://try-test/Organization.csv: ACL set to Public  [2 of 6]
+s3://try-test/Sites.csv: ACL set to Public  [3 of 6]
+s3://try-test/Variables.csv: ACL set to Public  [4 of 6]
+s3://try-test/WaterSources.csv: ACL set to Public  [5 of 6]
+s3://try-test/Well_Data.csv: ACL set to Public  [6 of 6]
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ python -m pip show sphinx_rtd_theme
+
+WARNING: Package(s) not found: sphinx_rtd_theme
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ 
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ pip install sphinx_rtd_theme
+
+Collecting sphinx_rtd_theme
+  Downloading sphinx_rtd_theme-2.0.0-py2.py3-none-any.whl.metadata (4.4 kB)
+Requirement already satisfied: sphinx<8,>=5 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx_rtd_theme) (7.3.7)
+Requirement already satisfied: docutils<0.21 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx_rtd_theme) (0.18.1)
+Collecting sphinxcontrib-jquery<5,>=4 (from sphinx_rtd_theme)
+  Downloading sphinxcontrib_jquery-4.1-py2.py3-none-any.whl.metadata (2.6 kB)
+Requirement already satisfied: sphinxcontrib-applehelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.0.2)
+Requirement already satisfied: sphinxcontrib-devhelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.0.2)
+Requirement already satisfied: sphinxcontrib-jsmath in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.0.1)
+Requirement already satisfied: sphinxcontrib-htmlhelp>=2.0.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (2.0.0)
+Requirement already satisfied: sphinxcontrib-serializinghtml>=1.1.9 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.1.10)
+Requirement already satisfied: sphinxcontrib-qthelp in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.0.3)
+Requirement already satisfied: Jinja2>=3.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (3.1.4)
+Requirement already satisfied: Pygments>=2.14 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (2.15.1)
+Requirement already satisfied: snowballstemmer>=2.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (2.2.0)
+Requirement already satisfied: babel>=2.9 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (2.11.0)
+Requirement already satisfied: alabaster~=0.7.14 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (0.7.16)
+Requirement already satisfied: imagesize>=1.3 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (1.4.1)
+Requirement already satisfied: requests>=2.25.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (2.32.2)
+Requirement already satisfied: packaging>=21.0 in /opt/anaconda3/lib/python3.12/site-packages (from sphinx<8,>=5->sphinx_rtd_theme) (23.2)
+Requirement already satisfied: pytz>=2015.7 in /opt/anaconda3/lib/python3.12/site-packages (from babel>=2.9->sphinx<8,>=5->sphinx_rtd_theme) (2024.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/anaconda3/lib/python3.12/site-packages (from Jinja2>=3.0->sphinx<8,>=5->sphinx_rtd_theme) (2.1.3)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx<8,>=5->sphinx_rtd_theme) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx<8,>=5->sphinx_rtd_theme) (3.7)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx<8,>=5->sphinx_rtd_theme) (2.2.2)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/anaconda3/lib/python3.12/site-packages (from requests>=2.25.0->sphinx<8,>=5->sphinx_rtd_theme) (2024.7.4)
+Downloading sphinx_rtd_theme-2.0.0-py2.py3-none-any.whl (2.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 4.5 MB/s eta 0:00:00
+Downloading sphinxcontrib_jquery-4.1-py2.py3-none-any.whl (121 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 121.1/121.1 kB 2.2 MB/s eta 0:00:00
+Installing collected packages: sphinxcontrib-jquery, sphinx_rtd_theme
+Successfully installed sphinx_rtd_theme-2.0.0 sphinxcontrib-jquery-4.1
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ 
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ python -m pip show sphinx_rtd_theme
+Name: sphinx-rtd-theme
+Version: 2.0.0
+Summary: Read the Docs theme for Sphinx
+Home-page: https://github.com/readthedocs/sphinx_rtd_theme
+Author: Dave Snider, Read the Docs, Inc. & contributors
+Author-email: dev@readthedocs.org
+License: MIT
+Location: /opt/anaconda3/lib/python3.12/site-packages
+Requires: docutils, sphinx, sphinxcontrib-jquery
+Required-by: 
+(base) Lizas-MacBook-Pro:ASPA_WUDR lizamclatchy$ cd /opt/anaconda3/lib/python3.12/site-packages/sphinx_rtd_theme/
+(base) Lizas-MacBook-Pro:sphinx_rtd_theme lizamclatchy$ ls
+__init__.py		layout.html		static
+__pycache__		locale			theme.conf
+breadcrumbs.html	search.html		versions.html
+footer.html		searchbox.html
+(base) Lizas-MacBook-Pro:sphinx_rtd_theme lizamclatchy$ cp /opt/anaconda3/lib/python3.12/site-packages/sphinx_rtd_theme/layout.html /Users/lizamclatchy/Documents/GitHub/ASPA/docs/_templates/
+(base) Lizas-MacBook-Pro:sphinx_rtd_theme lizamclatchy$ nano /Users/lizamclatchy/Documents/GitHub/ASPA/docs/_templates/layout.html
+
+/Users/lizamclatchy/Documents/GitHub/ASPA/docs/_templates/layout.html   Modified
+
+{# TEMPLATE VAR SETTINGS #}
+{%- set url_root = pathto('', 1) %}
+{%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
+{%- if not embedded and docstitle %}
+  {%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{%- else %}
+  {%- set titlesuffix = "" %}
+{%- endif %}
+{%- set lang_attr = 'en' if language == None else (language | replace('_', '-')$
+{%- set sphinx_writer = 'writer-html5' if html5_doctype else 'writer-html4' -%}
+
+{# Build sphinx_version_info tuple from sphinx_version string in pure Jinja #}
+{%- set (_ver_major, _ver_minor) = (sphinx_version.split('.') | list)[:2] | map$
+{%- set sphinx_version_info = (_ver_major, _ver_minor, -1) -%}
+
+<!DOCTYPE html>
+<html class="{{ sphinx_writer }}" lang="{{ lang_attr }}"{% if sphinx_version_in$
+<head>
+  <meta charset="utf-8" />
+
+^G Get Help  ^O WriteOut  ^R Read File ^Y Prev Pg   ^K Cut Text  ^C Cur Pos   
+^X Exit      ^J Justify   ^W Where is  ^V Next Pg   ^U UnCut Text^T To Spell  
+<body class="wy-body-for-nav">
+
+  {%- block extrabody %} {% endblock %}
+  <div class="wy-grid-for-nav">
+    {#- SIDE NAV, TOGGLES ON MOBILE #}
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" {% if theme_style_nav_header_background %} style="background: {{theme_style_nav_header_background}}" {% endif %}>
+          {%- block sidebartitle %}
+
+          {# the logo helper function was removed in Sphinx 6 and deprecated since Sphinx 4 #}
+          {# the master_doc variable was renamed to root_doc in Sphinx 4 (master_doc still exists in later Sphinx versions) #}
+          {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+          {%- set _root_doc = root_doc|default(master_doc) %}
+          <a href="{{ pathto(_root_doc) }}"{% if not theme_logo_only %} class="icon icon-home"{% endif %}>
+            {% if not theme_logo_only %}{{ project }}{% endif %}
+            {%- if logo or logo_url %}
+              <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}"/>
+            {%- endif %}
+          </a>
+
+          {%- if theme_display_version %}
+            {%- set nav_version = version %}
+            {%- if READTHEDOCS and current_version %}
+              {%- set nav_version = current_version %}
+            {%- endif %}
+            {%- if nav_version %}
+              <div class="version">
+                {{ nav_version }}
+              </div>
+            {%- endif %}
+          {%- endif %}
+
+          {%- include "searchbox.html" %}
+
+          {%- endblock %}
+        </div>
+
+        {%- block navigation %}
+        {#- Translators: This is an ARIA section label for the main navigation menu -#}
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="{{ _('Navigation menu') }}">
+          {%- block menu %}
+            {%- set toctree = toctree(maxdepth=theme_navigation_depth|int,
+                                      collapse=theme_collapse_navigation|tobool,
+                                      includehidden=theme_includehidden|tobool,
+                                      titles_only=theme_titles_only|tobool) %}
+            {%- if toctree %}
+              {{ toctree }}
+            {%- else %}
+              <!-- Local TOC -->
+              <div class="local-toc">{{ toc }}</div>
+            {%- endif %}
+          {%- endblock %}
+        </div>
+        {%- endblock %}
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      {#- MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
+      {#- Translators: This is an ARIA section label for the navigation menu that is visible when viewing the page on mobile devices -#}
+      <nav class="wy-nav-top" aria-label="{{ _('Mobile navigation menu') }}" {% if theme_style_nav_header_background %} style="background: {{theme_style_nav_header_background}}" {% endif %}>
+        {%- block mobile_nav %}
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="{{ pathto(master_doc) }}">{{ project }}</a>
+        {%- endblock %}
+      </nav>
+
+      <div class="wy-nav-content">
+      {%- block content %}
+        {%- if theme_style_external_links|tobool %}
+        <div class="rst-content style-external-links">
+        {%- else %}
+        <div class="rst-content">
+        {%- endif %}
+          {% include "breadcrumbs.html" %}
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+          {%- block document %}
+           <div itemprop="articleBody">
+             {% block body %}{% endblock %}
+           </div>
+           {%- if self.comments()|trim %}
+             <div class="articleComments">
+               {%- block comments %}{% endblock %}
+             </div>
+           {%- endif%}
+          </div>
+          {%- endblock %}
+          {% include "footer.html" %}
+        </div>
+      {%- endblock %}
+      </div>
+    </section>
+  </div>
+  {% include "versions.html" -%}
+
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable({{ 'true' if theme_sticky_navigation|tobool else 'false' }});
+      });
+  </script>
+
+  {#- Do not conflict with RTD insertion of analytics script #}
+  {%- if not READTHEDOCS %}
+    {%- if theme_analytics_id %}
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ theme_analytics_id }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ theme_analytics_id }}', {
+          'anonymize_ip': {{ 'true' if theme_analytics_anonymize_ip|tobool else 'false' }},
+      });
+    </script>
+
+    {%- endif %}
+  {%- endif %}
+
+  {%- block footer %} {% endblock %}
+
+</body>
+</html>

@@ -26,6 +26,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'sphinx_rtd_theme'  # Use the popular Read the Docs theme
 html_static_path = ['_static']
 
+html_css_files = [
+    'custom.css',
+]
+
 # -- Sidebar Configuration ---------------------------------------------------
 html_sidebars = {
     '**': [

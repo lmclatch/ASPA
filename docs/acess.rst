@@ -3,7 +3,35 @@ Acessing the Data
 
 Introduction
 ------------
-A guide to accessing the processsed data 
+A guide to accessing the processsed data. The tables are posted to an object endpoint space through Digital Ocean and are publically acessible.
+
+
+Required Libraries
+------------------
+
+To access the endpoints within Python, you'll need this Python library
+
+- **Requests**: A simple and elegant HTTP library for Python, perfect for making HTTP requests to your endpoints.
+
+You can install the `requests` library using pip:
+
+bash
+pip install requests
+
+Here is a basic GET request code snippet:
+
+import requests
+
+url = "https://your-endpoint-space-url.com/api/resource"
+response = requests.get(url)
+
+if response.status_code == 200:
+    data = response.json()
+    print("Data retrieved:", data)
+else:
+    print(f"Failed to retrieve data. Status code: {response.status_code}")
+
+
 
 Accessible Tables
 -----------------
