@@ -50,6 +50,12 @@ ReportYear: Year associated with data
 Example: 2021
 
 
+URL ~
+
+
+
+
+
 
 The following tables are specified metadata tables used to support the main data table. 
 Accompaned by a decsiption of American Samoan specific example of what each field corresponds too.
