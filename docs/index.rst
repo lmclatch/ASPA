@@ -13,6 +13,18 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
    acess
    pipeline
 
+Access Data
+==================
+
+To access the data, follow: https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html
+
+
+Overview
+==================
+
+To read our overview follow: https://lmclatch-aspa-wudr.readthedocs.io/en/latest/pipeline.html
+
+
 
 Code
 ==================
