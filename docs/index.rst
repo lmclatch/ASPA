@@ -32,7 +32,7 @@ https://lmclatch-aspa-wudr.readthedocs.io/en/latest/pipeline.html
 Code
 ==================
 
-You can view the specific code file on GitHub:
+You can view the specific code file on GitHub
 
-`__main__.py on GitHub <https://github.com/lmclatch/ASPA/blob/main/folder/folder1/__main__.py>`_
+https://github.com/lmclatch/ASPA/blob/main/folder/folder1/__main__.py
 
