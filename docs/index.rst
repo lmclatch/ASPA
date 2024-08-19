@@ -16,8 +16,8 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
 Access Data
 ==================
 
-To access the data, click: 
-https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html
+Visit the documentation at <https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html>.
+
 
 Overview
 ==================
