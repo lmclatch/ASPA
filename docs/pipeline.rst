@@ -1,6 +1,14 @@
-Data Pipeline 
-====================
+Background
+==========
 
+Project Objective
+-----------------
+
+Goal: Process and Transfer Water use data to USGS 
+
+
+Data Pipeline 
+----------------
 Comprehensive Overview of the Pipeline
 
 Purpose and Scope
@@ -71,15 +79,4 @@ Well Data: The well_data  function imports necessary production well information
 Metadata Tables: There are a suite of functions designed for creating associated metadata tables required for the Wade 2.0 Schema needed for USGS.
 
 Uploading Data: The upload_to_digitalocean_spaces function utilizing Boto3, the pipeline uploads the processed CSV file to a specified DigitalOcean endpoint space based on required environmental variables.bine_matching_rows(water data)
-
-End-User Documentation
------------------------------------
-    Introduction
-    
-Document Purpose: This document aims to guide users through accessing and utilizing the transformed data produced by the water usage data pipeline.
-Pipeline Overview: The data pipeline processes water usage data, transforms it according to specified rules and uploads the transformed data to a DigitalOcean Space for storage and further use.
-    Accessing the Data
-    
-How to Access: Users can access the transformed data by downloading the CSV files from the specified DigitalOcean Space. The .csvs are publicly accessible using the object endpoint space URL.
-File Format: The output data is in CSV format that follows the Wade 2.0 Schema and is compatible with USGS software.
 

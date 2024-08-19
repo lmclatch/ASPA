@@ -5,7 +5,7 @@
 
 # -- Project information -----------------------------------------------------
 project = 'ASPA WUDR'
-copyright = '2024, Liza McLatchy & Chris Shuler'
+copyright = '2024, Water Resources Research Center, Liza McLatchy & Chris Shuler'
 author = 'Liza McLatchy & Chris Shuler'
 release = '1.0'
 
@@ -39,23 +39,13 @@ html_sidebars = {
         'globaltoc.html',  # Global table of contents
         'sidebarlinks.html' # Custom sidebar links
     ],
-    'background': [
-        'localtoc.html',   # Local table of contents for Background section
-        'relations.html',
-    ],
-    'serverless': [
-        'localtoc.html',   # Local table of contents for Serverless Functions
+    'acess': [
+        'localtoc.html',   # Local table of contents for Access Functions
         'relations.html',
     ],
     'pipeline': [
-        'localtoc.html',   # Local table of contents for Data Pipeline
-        'relations.html',
-    ],
-    'endpointspace': [
-        'localtoc.html',   # Local table of contents for Object Endpoint Spaces
-        'relations.html',
-    ],
-}
+        'localtoc.html',   # Local table of contents for Data Pipeline/Background
+        'relations.html',]}
 
 # -- Extension Configuration -------------------------------------------------
 # Enable TODOs to be shown in the output
