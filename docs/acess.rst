@@ -1,9 +1,9 @@
-Acessing the Data
+Accessing the Data
 ====================
 
 Introduction
 ------------
-A guide to accessing the processsed data. The tables are posted to an object endpoint space through Digital Ocean and are publically acessible.
+A guide to accessing the processed data. The tables are posted to an object endpoint space through Digital Ocean and are publically accessible.
 
 Data Endpoint URLs:
 
@@ -48,7 +48,7 @@ else:
 
 Accessible Tables
 -----------------
-There are multiple .CSVs availible for download. Followed are high-level descirptions.
+There are multiple .CSVs available for download. Following are high-level descriptions.
 
 
 Final Aggregated Data
@@ -100,7 +100,7 @@ https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv
 
 
 The following tables are specified metadata tables used to support the main data table. 
-Accompaned by a decsiption of American Samoan specific example of what each field corresponds too.
+Accompanied by a description of American Samoan specific examples of what each field corresponds to.
 
 Sites
 -------------
@@ -212,4 +212,5 @@ URL ~
 
 
 https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv
+
 
