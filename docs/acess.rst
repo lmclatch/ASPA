@@ -5,11 +5,11 @@ Introduction
 ------------
 A guide to accessing the processed data. The tables are posted to an object endpoint space through Digital Ocean and are publically accessible.
 
-Data Endpoint URLs:
+Data Endpoint URLs ~
 
-'https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv'_
+https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv
 
-'https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv'_
+https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv
 
 https://try-test.sfo3.digitaloceanspaces.com/Sites.csv 
 
