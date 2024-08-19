@@ -1,12 +1,14 @@
-/* Custom styling to position logos at the bottom right */
 .footer-logos {
     position: fixed;
     bottom: 10px;
     right: 10px;
     display: flex;
     align-items: center;
+    z-index: 1000;
 }
 
 .footer-logos img {
-    margin-left: 10px;
+    width: 50px; /* Adjust this value to make the logo smaller */
+    height: auto;
+    margin-left: 10px; /* Space between logos */
 }
