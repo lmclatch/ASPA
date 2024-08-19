@@ -14,7 +14,7 @@ Accompaned by a decsiption of American Samoan specific example of what each fiel
 
 Sites
 -------------
-
+Sites.csv
 
 SiteNativeID: Unique identifier code / ID used by the data provider to distinguish the data site in the source data set.
 
@@ -42,7 +42,7 @@ URL ~
 
 Organization
 ------------
-
+Organization.csv
 
 OrganizationName: Name corresponding to unique organization and the organization ID
 
@@ -77,5 +77,8 @@ Example: AS
 OrganizationPurview: A description of the purview of the agency (i.e. water rights, consumptive use, etc.)
 
 Example: water utility, production, delivery, consumptive use 
+
+
+URL ~
 
 
