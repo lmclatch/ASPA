@@ -7,16 +7,16 @@ A guide to accessing the processed data. The tables are posted to an object endp
 
 Data Endpoint URLs:
 
-https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv
+https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv 
 
-https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv
+https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv 
 
-https://try-test.sfo3.digitaloceanspaces.com/Sites.csv
+https://try-test.sfo3.digitaloceanspaces.com/Sites.csv 
 
-https://try-test.sfo3.digitaloceanspaces.com/Variables.csv
+https://try-test.sfo3.digitaloceanspaces.com/Variables.csv 
 
-https://try-test.sfo3.digitaloceanspaces.com/Organization.csv
-
+https://try-test.sfo3.digitaloceanspaces.com/Organization.csv 
+ 
 
 
 Required Libraries
