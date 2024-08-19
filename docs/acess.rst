@@ -38,7 +38,7 @@ Example: Village (aggregation of individual water meter use within each village 
 
 URL ~ 
 
-
+Note: This also contains site-specific well data.
 
 Organization
 ------------
@@ -81,4 +81,29 @@ Example: water utility, production, delivery, consumptive use
 
 URL ~
 
+Variables
+----------
+Variables.csv
 
+VariableCV: This is a high-level variable used for site-specific water data.
+
+Example:
+
+
+AmountUnitCV: Unit of the site-specific  amount.
+
+Example:
+
+
+AggregationIntervalUnitCV: The aggregation unit (e.g., day ,month, year).
+
+Example: 
+
+
+
+URL ~
+
+
+Water Sources
+--------------
+WaterSources.csv

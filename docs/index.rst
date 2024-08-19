@@ -14,8 +14,6 @@ Welcome to American Samoa Power Authority Water Use Data documentation!
    pipeline
 
 
-
-
 Code
 ==================
 
