@@ -12,9 +12,42 @@ There are multiple .CSVs availible for download. Followed are high-level descirp
 
 Final Aggregated Data
 ----------------------
+This is the main table with the required water use data
 FinalAggregatedData.csv
 
+SiteNativeID: Unique identifier code / ID used by the data provider to distinguish the data site in the source data set.
 
+Example: Aasu		
+
+
+BeneficialUseCategory: The use category for which the water is being allocated to
+
+Example: Commercial
+
+			
+TimeframeStart: The datetime start of the recorded usage
+
+Example: 2021-12-01
+
+
+TimeframeEnd: The datetime end of the recorded usage
+
+Example: 2021-12-31
+
+
+Amount: Usage of water reported for the specific time frame, village, and use.
+
+Example: 5008.0
+
+
+VariableCV: This is a high-level variable used for site-specific water data.
+
+Example: Consumptive Use
+
+
+ReportYear: Year associated with data
+	
+Example: 2021
 
 
 
@@ -96,17 +129,17 @@ Variables.csv
 
 VariableCV: This is a high-level variable used for site-specific water data.
 
-Example:
+Example: Consumptive Use
 
 
 AmountUnitCV: Unit of the site-specific  amount.
 
-Example:
+Example: Gallons
 
 
 AggregationIntervalUnitCV: The aggregation unit (e.g., day ,month, year).
 
-Example: 
+Example: Month
 
 
 
