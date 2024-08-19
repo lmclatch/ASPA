@@ -7,7 +7,16 @@ A guide to accessing the processsed data
 
 Accessible Tables
 -----------------
-The multiple .CSVs availible for download
+There are multiple .CSVs availible for download. Followed are high-level descirptions.
+
+
+Final Aggregated Data
+----------------------
+FinalAggregatedData.csv
+
+
+
+
 
 The following tables are specified metadata tables used to support the main data table. 
 Accompaned by a decsiption of American Samoan specific example of what each field corresponds too.
@@ -107,3 +116,13 @@ URL ~
 Water Sources
 --------------
 WaterSources.csv
+
+
+WaterSourceTypeCV: the high level description of the water source type 
+
+Example: Groundwater
+
+URL ~
+
+
+
