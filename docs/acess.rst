@@ -41,7 +41,7 @@ There are multiple .CSVs availible for download. Followed are high-level descirp
 Final Aggregated Data
 ----------------------
 This is the main table with the required water use data
-FinalAggregatedData.csv
+Final_Aggregated_Data.csv
 
 SiteNativeID: Unique identifier code / ID used by the data provider to distinguish the data site in the source data set.
 
@@ -80,6 +80,7 @@ Example: 2021
 
 URL ~
 
+https://try-test.sfo3.digitaloceanspaces.com/Final_Aggregated_Data.csv
 
 
 
@@ -113,6 +114,8 @@ Example: Village (aggregation of individual water meter use within each village 
 
 
 URL ~ 
+
+https://try-test.sfo3.digitaloceanspaces.com/Sites.csv
 
 Note: This also contains site-specific well data.
 
@@ -157,6 +160,8 @@ Example: water utility, production, delivery, consumptive use
 
 URL ~
 
+https://try-test.sfo3.digitaloceanspaces.com/Organization.csv
+
 Variables
 ----------
 Variables.csv
@@ -179,6 +184,7 @@ Example: Month
 
 URL ~
 
+https://try-test.sfo3.digitaloceanspaces.com/Variables.csv
 
 Water Sources
 --------------
@@ -192,4 +198,5 @@ Example: Groundwater
 URL ~
 
 
+https://try-test.sfo3.digitaloceanspaces.com/WaterSources.csv
 
