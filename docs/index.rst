@@ -17,14 +17,13 @@ Access Data
 ==================
 
 To access the data, click: 
-
-https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html
+`Access Data <https://lmclatch-aspa-wudr.readthedocs.io/en/latest/acess.html>`_ 
 
 Overview
 ==================
 
 To read our overview, click: 
-`Pipeline Overview  <https://lmclatch-aspa-wudr.readthedocs.io/en/latest/pipeline.html>`_
+`Overview <https://lmclatch-aspa-wudr.readthedocs.io/en/latest/pipeline.html>`_
 
 Code
 ==================
@@ -32,3 +31,4 @@ Code
 You can view the specific code file on GitHub:
 
 `__main__.py on GitHub <https://github.com/lmclatch/ASPA/blob/main/folder/folder1/__main__.py>`_
+
